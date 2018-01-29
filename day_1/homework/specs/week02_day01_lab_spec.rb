@@ -112,26 +112,66 @@ end
 
 # class TestLibrary < MiniTest::Test
 #
-#   def test_library_has_books
-#     library = Library.new([])
-#     assert_equal([], library.books)
+#   def setup
+#
+#     @books = [
+#       {
+#         title: "Lord of the rings",
+#         rental_details: {
+#           student_name: "Paul",
+#           date: "01/01/18"
+#         }
+#       }
+#     ]
+#
 #   end
 #
-#   def test_get_info_for_title
-#     #arrange
-#     book = {
-#       title: "Lord of the Rings",
-#       rental_details: {
-#         student_name: "Jeff",
-#         date: "29/01/2018"
-#       }
-#     }
+#   def test_get_books
+#     library = Library.new(@books)
 #
-#     library = Library.new([book])
-#     #act
-#     book_info = library.get_info_for_title("Lord of the Rings")
-#     #assert
-#     assert_equal(book, book_info)
 #   end
 #
 # end
+
+class TestLibrary < MiniTest::Test
+  # 16
+  def test_library_has_books
+    library = Library.new([])
+    assert_equal([], library.books)
+  end
+  # 17
+  def test_get_info_for_title
+    #arrange
+    book = {
+      title: "Lord of the Rings",
+      rental_details: {
+        student_name: "Jeff",
+        date: "29/01/2018"
+      }
+    }
+
+    library = Library.new([book])
+    #act
+    book_info = library.get_info_for_title("Lord of the Rings")
+    #assert
+    assert_equal(book, book_info)
+  end
+  #18
+  def test_get_rental_details
+     # Arrange
+     book = {
+       title: "Lord of the Rings",
+       rental_details: {
+         student_name: "Jeff",
+         date: "29/01/2018"
+       }
+     }
+
+     library = Library.new([book])
+     # Act
+     rental_details = library.get_rental_details_for_book("Lord of the Rings")
+     # Assert
+     assert_equal(book[:rental_details], rental_details)
+  end
+
+end
