@@ -173,5 +173,22 @@ class TestLibrary < MiniTest::Test
      # Assert
      assert_equal(book[:rental_details], rental_details)
   end
+  # 19
+  def test_add_book_to_library
+    # Arrange
+    book = {
+      title: "Lord of the Rings",
+      rental_details: {
+        student_name: "Jeff",
+        date: "29/01/2018"
+      }
+    }
+
+    library = Library.new([book])
+    # Act
+    library.add_book_to_library("The Old Man and the Sea")
+    # Assert
+    assert_equal(2, library.book_count())
+  end
 
 end

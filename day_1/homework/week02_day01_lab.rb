@@ -89,7 +89,7 @@ class Library
 
   attr_reader :books
 
-  def initialize(books)
+  def initialize(books) # books is an array
     @books = books
   end
 
@@ -105,6 +105,21 @@ class Library
       return book[:rental_details] if book[:title] == title
     end
     return nil
+  end
+
+  def book_count()
+    return @books.count()
+  end
+
+  def add_book_to_library(title)
+    new_book = {
+      title: title,
+      rental_details: {
+        sudent_name: "",
+        date: ""
+      }
+    }
+    @books << new_book
   end
 
 end
