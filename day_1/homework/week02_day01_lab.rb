@@ -1,9 +1,8 @@
 class Student
 
-  def initialize(input_name, input_cohort, fav_lang)
+  def initialize(input_name, input_cohort)
     @name = input_name
     @cohort = input_cohort
-    @fav_lang = fav_lang
   end
 
   def get_student_name()
