@@ -61,5 +61,77 @@ class TestTeam < MiniTest::Test
     team.coach_name = ("Coach Maggie")
     assert_equal("Coach Maggie", team.coach_name())
   end
+  # 11
+  def test_add_player
+    team = Team.new("The G4 Giants", ["Bill", "Moira", "Tony", "Julie"], "Coach Alex")
+    team.add_player("Dave")
+    assert_equal(["Bill", "Moira", "Tony", "Julie", "Dave"], team.player_list())
+  end
+  # 12
+  def test_check_for_player__is_in_team
+    #Arrange
+    team = Team.new("The G4 Giants", ["Bill", "Moira", "Tony", "Julie"], "Coach Alex")
+    check_player = "Tony"
+    #Act
+    result = team.check_for_player(check_player)
+    #Assert
+    assert_equal(true, result)
+  end
+  # 13
+  def test_check_for_player__not_in_team
+    #Arrange
+    team = Team.new("The G4 Giants", ["Bill", "Moira", "Tony", "Julie"], "Coach Alex")
+    check_player = "Glenda"
+    #Act
+    result = team.check_for_player(check_player)
+    #Assert
+    assert_equal(false, result)
+  end
+  # 14
+  def test_increase_points__win
+    # Arrange
+    team = Team.new("The G4 Giants", ["Bill", "Moira", "Tony", "Julie"], "Coach Alex")
+    win = true
+    # Act
+    team.update_points(win)
+    # Assert
+    assert_equal(1, team.points)
+  end
+  # 15
+  def test_increase_points__no_win
+    # Arrange
+    team = Team.new("The G4 Giants", ["Bill", "Moira", "Tony", "Julie"], "Coach Alex")
+    win = false
+    # Act
+    team.update_points(win)
+    # Assert
+    assert_equal(0, team.points)
+  end
 
 end
+
+# class TestLibrary < MiniTest::Test
+#
+#   def test_library_has_books
+#     library = Library.new([])
+#     assert_equal([], library.books)
+#   end
+#
+#   def test_get_info_for_title
+#     #arrange
+#     book = {
+#       title: "Lord of the Rings",
+#       rental_details: {
+#         student_name: "Jeff",
+#         date: "29/01/2018"
+#       }
+#     }
+#
+#     library = Library.new([book])
+#     #act
+#     book_info = library.get_info_for_title("Lord of the Rings")
+#     #assert
+#     assert_equal(book, book_info)
+#   end
+#
+# end

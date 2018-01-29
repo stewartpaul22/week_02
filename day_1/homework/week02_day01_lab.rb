@@ -33,12 +33,13 @@ end
 
 class Team
 
-  attr_accessor :team_name, :player_list, :coach_name
+  attr_accessor :team_name, :player_list, :coach_name, :points
 
   def initialize(name, players, coach)
     @team_name = name
     @player_list = players
     @coach_name = coach
+    @points = 0
   end
 
   # def get_team_name()
@@ -57,4 +58,38 @@ class Team
   #   @coach = coach_name
   # end
 
+  def add_player(player_name)
+    @player_list << player_name
+  end
+
+  def check_for_player(player_name)
+    for player in @player_list
+      return true if player_name == player
+    end
+    return false
+  end
+
+  def update_points(result)
+    @points += 1 if result == true
+  end
+
 end
+
+# class Library
+#
+#   attr_reader :books
+#
+#   def initialize(books)
+#     @books = books
+#   end
+#
+#   def get_info_for_title(title)
+#     for book in @books
+#       if book[:title] == title
+#         return book
+#       end
+#     end
+#     return nil
+#   end
+#
+# end
