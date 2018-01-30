@@ -2,9 +2,9 @@ class River
 
   attr_accessor :name
 
-  def initialize(name)
+  def initialize(name, fish)
     @name = name
-    @fish = []
+    @fish = fish
   end
 
   def fish_count()
