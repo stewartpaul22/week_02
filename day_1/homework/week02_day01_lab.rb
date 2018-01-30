@@ -122,4 +122,13 @@ class Library
     @books << new_book
   end
 
+  def change_rental_details(title, name, date)
+    for book in @books
+      if book[:title] == title
+        book[:rental_details][:student_name] = name
+        book[:rental_details][:date] = date
+      end
+    end
+  end
+
 end

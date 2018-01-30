@@ -191,4 +191,22 @@ class TestLibrary < MiniTest::Test
     assert_equal(2, library.book_count())
   end
 
+  def test_change_rental_details
+    # Arrange
+    book = {
+      title: "Lord of the Rings",
+      rental_details: {
+        student_name: "Jeff",
+        date: "29/01/2018"
+      }
+    }
+
+    library = Library.new([book])
+    # Act
+    library.change_rental_details("Lord of the Rings", "Paul", "13/02/2018")
+    updated_book = library.get_info_for_title("Lord of the Rings")
+    # Assert
+    assert_equal(book, updated_book)
+  end
+
 end
