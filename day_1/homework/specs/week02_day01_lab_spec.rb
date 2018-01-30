@@ -1,12 +1,17 @@
 require('minitest/autorun')
 require('minitest/rg')
-require_relative('../week02_day01_lab')
+require_relative('../week02_day01_lab.rb')
 
 class TestStudent < MiniTest::Test
+
+  def setup
+    @student = Student.new("Paul", 4)
+  end
+
   # 1
   def test_get_student_name
-    student = Student.new("Paul", 4)
-    assert_equal("Paul", student.get_student_name())
+    #student = Student.new("Paul", 4)
+    assert_equal("Paul", @student.get_student_name())
   end
   # 2
   def test_get_cohort_number
@@ -65,7 +70,8 @@ class TestTeam < MiniTest::Test
   def test_add_player
     team = Team.new("The G4 Giants", ["Bill", "Moira", "Tony", "Julie"], "Coach Alex")
     team.add_player("Dave")
-    assert_equal(["Bill", "Moira", "Tony", "Julie", "Dave"], team.player_list())
+    #assert_equal(["Bill", "Moira", "Tony", "Julie", "Dave"], team.player_list())
+    assert_equal(5, team.player_list.count())
   end
   # 12
   def test_check_for_player__is_in_team
@@ -187,10 +193,15 @@ class TestLibrary < MiniTest::Test
     library = Library.new([book])
     # Act
     library.add_book_to_library("The Old Man and the Sea")
+    result = library.get_info_for_title("The Old Man and the Sea")
+
     # Assert
+    assert_equal("The Old Man and the Sea", result[:title])
+    assert_equal("", result[:rental_details][:student_name])
+    assert_equal("", result[:rental_details][:date])
     assert_equal(2, library.book_count())
   end
-
+  # 20
   def test_change_rental_details
     # Arrange
     book = {

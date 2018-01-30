@@ -63,10 +63,11 @@ class Team
   end
 
   def check_for_player(player_name)
-    for player in @player_list
-      return true if player_name == player
-    end
-    return false
+    # for player in @player_list
+    #   return true if player_name == player
+    # end
+    # return false
+    return @player_list.include?(player_name)
   end
 
   def update_points(result)
@@ -115,7 +116,7 @@ class Library
     new_book = {
       title: title,
       rental_details: {
-        sudent_name: "",
+        student_name: "",
         date: ""
       }
     }
@@ -129,6 +130,7 @@ class Library
         book[:rental_details][:date] = date
       end
     end
+    return nil
   end
 
 end
