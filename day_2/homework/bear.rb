@@ -13,6 +13,7 @@ class Bear
 
   def take_fish_from_river(river)
     @stomach << river.fish[0]
+    river.fish.delete_at(0)
   end
 
 end

@@ -19,6 +19,4 @@ class River
   #   copy =
   # end
 
-
-
 end
