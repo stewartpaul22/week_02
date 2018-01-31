@@ -15,8 +15,9 @@ class River
     @fish << fish
   end
 
-  # def get_river_copy()
-  #   copy =
-  # end
+  def get_fish_copy()
+    copy = @fish
+    return copy
+  end
 
 end
